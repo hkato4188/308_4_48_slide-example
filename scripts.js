@@ -13,9 +13,13 @@ Requirements:
 
 
 
+//scope  variable   = <div></div>
 const chatContainer = document.createElement('div');
+
+
 chatContainer.className = 'chat-container';
 
+//es6 arrow function anonymous fuction
 const createChatWindow = () => {
     const chatWindow = document.createElement('div');
     chatWindow.className = 'chat-window';
@@ -27,6 +31,7 @@ const createChatWindow = () => {
     const inputGroup = document.createElement('div');
     inputGroup.className = 'input-group';
 
+
     const nameInput = document.createElement('input');
     nameInput.type = 'text';
     nameInput.placeholder = 'Enter your name';
@@ -37,11 +42,15 @@ const createChatWindow = () => {
     messageInput.placeholder = 'Enter your message';
     inputGroup.appendChild(messageInput);
 
+
     const submitButton = document.createElement('button');
     submitButton.textContent = 'Send';
     inputGroup.appendChild(submitButton);
 
     chatWindow.appendChild(inputGroup);
+
+    //Put each chatWindow into the chatContainer
+    //Later on we will append the chatContainer to the body
     chatContainer.appendChild(chatWindow);
 
     return {
@@ -55,9 +64,13 @@ const createChatWindow = () => {
 const chatWindow1 = createChatWindow();
 const chatWindow2 = createChatWindow();
 
+//here we are appending the cht container to the DOM
+//above in the method we append everything to the container
 document.body.appendChild(chatContainer);
 
+
 const addMessageToBothChats = (name, message) => {
+
     const messageElement1 = document.createElement('div');
     messageElement1.textContent = `${name}: ${message}`;
     chatWindow1.messagesDiv.appendChild(messageElement1);
@@ -68,6 +81,7 @@ const addMessageToBothChats = (name, message) => {
 };
 
 const handleMessageSubmit = (nameInput, messageInput) => {
+
     const name = nameInput.value.trim();
     const message = messageInput.value.trim();
 
